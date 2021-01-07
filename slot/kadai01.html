@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kadai01</title>
+    <style>
+        #slot {
+            margin: 10% 0 0 34%;
+        }
+
+        #left {
+            width: 10%;
+            height: 10%;
+            position: relative;
+            margin: 0 0 7% -46%;
+        }
+
+        #center {
+            width: 10%;
+            height: 10%;
+            position: relative;
+            margin: 0 0 7% 5%;
+        }
+
+        #right {
+            width: 10%;
+            height: 10%;
+            position: relative;
+            margin: 0 0 7% 5%;
+        }
+
+        img {
+            width: 50%;
+            height: 50%;
+        }
+
+        #form {
+            margin: 0 0 0 4%;
+        }
+
+        #button1 {
+            width: 10%;
+            height: 10%;
+            margin: 0 6% 0 0;
+        }
+
+        #button2 {
+            width: 10%;
+            height: 10%;
+            margin: 0 6% 0 0;
+        }
+
+        #button3 {
+            width: 10%;
+            height: 10%;
+            margin: 0 6% 0 0;
+        }
+
+        h2 {
+            float: left;
+        }
+
+        input {
+            margin: 3%;
+        }
+
+        form {
+            margin: 2% 0 0 12%;
+        }
+
+        #raba {
+            width: 20%;
+            height: 20%;
+            position: relative;
+            margin: -100% 0 25% 30%;
+        }
+    </style>
+    <script>
+        var topMoveL;
+        var MoveL;
+        var topMoveC;
+        var MoveC;
+        var topMoveR;
+        var MoveR;
+        var ImgL;
+        var ImgC;
+        var ImgR;
+        var NUM;
+        var timerID1;
+        var timerID2;
+        var timerID3;
+        var tansu;
+        var bt1;
+        var bt2;
+        var bt3;
+        var lever;
+        var Name;
+
+        topMoveL = 0;
+        MoveL = 0;
+        topMoveR = 64;
+        MoveR = 80;
+        topMoveC = 32;
+        MoveC = 40;
+        ImgL = 1;
+        ImgC = 2;
+        ImgR = 3;
+        NUM = 0;
+        tensu = 0;
+        bt1 = 0;
+        bt2 = 0;
+        bt3 = 0;
+        lever = 0;
+
+        function kaiten1() {
+            MoveL += 10;
+            topMoveL += 8;
+            if (MoveL > 90) {
+                MoveL = -90;
+                topMoveL = -72;
+                ImgL += 1;
+            }
+            if (ImgL > 4) {
+                ImgL = 1;
+            }
+            document.getElementById("left").src = "./img/" + ImgL + ".png";
+            document.getElementById("left").style.top = topMoveL + "px";
+            document.getElementById("left").style.transform = "rotateX(" + MoveL + "deg)";
+        }
+        function kaiten2() {
+            MoveC += 10;
+            topMoveC += 8;
+            if (MoveC > 90) {
+                MoveC = -90;
+                topMoveC = -72;
+                ImgC += 1;
+            }
+            if (ImgC > 4) {
+                ImgC = 1;
+            }
+            document.getElementById("center").src = "./img/" + ImgC + ".png";
+            document.getElementById("center").style.top = topMoveC + "px";
+            document.getElementById("center").style.transform = "rotateX(" + MoveC + "deg)";
+        }
+        function kaiten3() {
+            MoveR += 10;
+            topMoveR += 8;
+            if (MoveR > 90) {
+                MoveR = -90;
+                topMoveR = -72;
+                ImgR += 1;
+            }
+            if (ImgR > 4) {
+                ImgR = 1;
+            }
+            document.getElementById("right").src = "./img/" + ImgR + ".png";
+            document.getElementById("right").style.top = topMoveR + "px";
+            document.getElementById("right").style.transform = "rotateX(" + MoveR + "deg)";
+        }
+
+        function button1() {
+            if (bt1 == 0) {
+                clearInterval(timerID1);
+                document.getElementById("left").src = "./img/" + ImgL + ".png";
+                document.getElementById("left").style.top = 0 + "px";
+                document.getElementById("left").style.transform = "rotateX(" + 0 + "deg)";
+                document.getElementById("button1").src = "./img/buttonRed2-150x150.png";
+                NUM += 1;
+                bt1 = 1;
+                if (NUM == 3) {
+                    document.getElementById("raba").src = "./img/lever_icon-icons.com_65255.png";
+                    count();
+                    NUM = 0;
+                    lever = 0;
+                }
+            }
+            else {
+                window.alert("止めてください");
+            }
+        }
+        function button2() {
+            if (bt2 == 0) {
+                clearInterval(timerID2);
+                document.getElementById("center").src = "./img/" + ImgC + ".png";
+                document.getElementById("center").style.top = 0 + "px";
+                document.getElementById("center").style.transform = "rotateX(" + 0 + "deg)";
+                document.getElementById("button2").src = "./img/buttonRed2-150x150.png";
+                NUM += 1;
+                bt2 = 1;
+                if (NUM == 3) {
+                    document.getElementById("raba").src = "./img/lever_icon-icons.com_65255.png";
+                    count();
+                    NUM = 0;
+                    lever = 0;
+                }
+            }
+            else {
+                window.alert("止めてください");
+            }
+        }
+        function button3() {
+            if (bt3 == 0) {
+                clearInterval(timerID3);
+                document.getElementById("right").src = "./img/" + ImgR + ".png";
+                document.getElementById("right").style.top = 0 + "px";
+                document.getElementById("right").style.transform = "rotateX(" + 0 + "deg)";
+                document.getElementById("button3").src = "./img/buttonRed2-150x150.png";
+                NUM += 1;
+                bt3 = 1;
+                if (NUM == 3) {
+                    document.getElementById("raba").src = "./img/lever_icon-icons.com_65255.png";
+                    count();
+                    NUM = 0;
+                    lever = 0;
+                }
+            }
+            else {
+                window.alert("止めてください");
+            }
+        }
+
+        function count() {
+            if (ImgC == ImgL && ImgC == ImgR && ImgC == 1) {
+                window.alert("当たり");
+                tensu += 100;
+                document.from.input.value = tensu;
+            }
+            else if (ImgC == ImgL && ImgC == ImgR && ImgC == 2) {
+                window.alert("ベル当たり");
+                tensu += 10;
+                document.from.input.value = tensu;
+            }
+            else if (ImgC == ImgL && ImgC == ImgR && ImgC == 3) {
+                window.alert("cherry当たり");
+                tensu += 50;
+                document.from.input.value = tensu;
+            }
+            else if (ImgC == ImgL && ImgC == ImgR && ImgC == 4) {
+                tensu += 10000;
+                document.from.input.value = tensu;
+                for (i = 0; i < 3; i++) {
+                    window.alert("阿部寛");
+                }
+            }
+        }
+        function raba() {
+            if (NUM == 0 && lever == 0) {
+                document.getElementById("raba").src = "./img/lever_icon-icons.com_65256.png";
+                document.getElementById("button1").src = "./img/buttonRed-150x150.png";
+                document.getElementById("button2").src = "./img/buttonRed-150x150.png";
+                document.getElementById("button3").src = "./img/buttonRed-150x150.png";
+                kaiten1();
+                kaiten2();
+                kaiten3();
+                timerID1 = setInterval("kaiten1()", Name);
+                timerID2 = setInterval("kaiten2()", Name);
+                timerID3 = setInterval("kaiten3()", Name);
+                bt1 = 0;
+                bt2 = 0;
+                bt3 = 0;
+                lever = 1;
+            }
+            else {
+                window.alert("止めてください");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        Name = prompt("速度を入力してください。");
+    </script>
+    <div id="slot" name="slot">
+        <img src="./img/Kiban.png" alt="元">
+        <img src="./img/1.png" alt="1" id="left">
+        <img src="./img/1.png" alt="2" id="center">
+        <img src="./img/1.png" alt="3" id="right">
+        <div id="form">
+            <img src="./img/buttonRed-150x150.png" alt="ボタン" value="左" onclick="button1()" id="button1">
+            <img src="./img/buttonRed-150x150.png" alt="ボタン" value="中" onclick="button2()" id="button2">
+            <img src="./img/buttonRed-150x150.png" alt="ボタン" value="右" onclick="button3()" id="button3">
+        </div>
+        <form name="from">
+            <h2>所持枚数：</h2><input type="text" size="10" name="input">
+        </form>
+        <img src="./img/lever_icon-icons.com_65255.png" alt="レバー" id="raba" onclick="raba()" onclick="kaiten1()"
+            onclick="kaiten2()" onclick="kaiten3()">
+    </div>
+</body>
+
+</html>
